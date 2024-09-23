@@ -27,15 +27,11 @@ const Layout = () => {
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Home />} />
-						<Route path="/demo" element={<Demo />} />
-						<Route path="/single/:theid" element={<Single />} />
 						<Route path="/info-characters/:id" element={<InfoCharacters />} />
 						<Route path="/info-planets/:id" element={<InfoPlanets />} />
 						<Route path="/info-vehicles/:id" element={<InfoVehicles />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
-					
-
 					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>

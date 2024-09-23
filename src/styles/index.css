@@ -4,3 +4,42 @@
 .borderRed{
     border-top: 2px red solid;
 }
+.cardsContainer{
+    overflow-x: scroll;
+}
+.favorite{
+    color: tomato;
+    background-color: inherit;
+    border: tomato 2px solid;
+    border-radius: 5px;
+
+}
+.favorite:hover{
+    color: tomato;
+    background-color: inherit;
+    border: tomato 2px solid;
+    border-radius: 5px;
+    scale: 1.2;
+}
+.noFavorite{
+    color: black;
+    background-color: inherit;
+    border: black 2px solid;
+    border-radius: 5px;
+}
+.noFavorite:hover{
+    color: tomato;
+    background-color: inherit;
+    border: tomato 2px solid;
+    border-radius: 5px;
+    scale: 1.2;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.delete{
+    background-color: inherit;
+    border: none
+}

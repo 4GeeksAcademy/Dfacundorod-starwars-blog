@@ -49,7 +49,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const resp = await fetch(`https://swapi.dev/api/people`);
 				const data = await resp.json();
 				await setStore({people: data.results});
-				console.log(`people es : `, data.results);
 			},
 			getPeopleDetails: (id)=>{
 				fetch(`https://swapi.dev/api/people/${id}`)
@@ -60,7 +59,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const resp = await fetch(`https://swapi.dev/api/planets`);
 				const data = await resp.json();
 				await setStore({planets: data.results});
-				console.log(`people es : `, data.results);
 			},
 			getPlanetsDetails: (id)=>{
 				fetch(`https://swapi.dev/api/planets/${id}`)
@@ -71,13 +69,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const resp = await fetch(`https://swapi.dev/api/vehicles`);
 				const data = await resp.json();
 				await setStore({vehicles: data.results});
-				console.log(`vehicles es : `, data.results);
 			},
 			getVehiclesDetails: (id)=>{
 				fetch(`https://swapi.dev/api/vehicles/${id}`)
 				.then(resp=> resp.json())
 				.then(data=> setStore({vehiclesDetails: data}))
 			},
+			addFavorite:(url, name)=>{
+				const store = getStore();
+				const data = {url, name};
+				const isFavorite = store.favorites.some((favorite)=>(favorite.name === name));
+				
+				if(!isFavorite){
+				setStore({
+					...store,
+					favorites:[...store.favorites, data]
+				})
+			} else{
+				const deleteFavorite= store.favorites.filter((favorite)=>(favorite.name !== name))
+				setStore({
+					...store,
+					favorites: deleteFavorite
+				})
+			}
+				
+				
+			},
+			deleteFavorite:(url)=>{
+				const store= getStore()
+				const updateFavortites = store.favorites.filter((favorite)=>(favorite.url !== url));
+				setStore({favorites: updateFavortites})
+			}
 		}
 	};
 };
